@@ -9,5 +9,5 @@ server.get('/', function(request, response, next){
 });
 
 server.listen(420, function(){
-		console.log('%s listening on %s', server.name, server.port)
+		console.log('%s listening on %s', server.name, server.url)
 });

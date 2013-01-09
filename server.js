@@ -8,6 +8,7 @@ server.get('/', function(request, response, next){
 		response.send('hello world');
 });
 
-server.listen(420, function(){
+var port = process.env.PORT || 5000;
+server.listen(port, function(){
 		console.log('%s listening on %s', server.name, server.url)
 });

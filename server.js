@@ -1,14 +1,31 @@
 var restify = require('restify');
+var mongo = require('mongodb');
+var router = require('./router');
 
-var server = restify.createServer({
-		name: 'mythrandir'
-});
-
-server.get('/', function(request, response, next){
-		response.send('hello world');
-});
-
+// server init details
+var db_uri = process.env.MONGOLAB_URI || 'mongodb://localhost/mythrandir';
 var port = process.env.PORT || 5000;
-server.listen(port, function(){
-		console.log('%s listening on %s', server.name, server.url)
+
+// create the HTTP server
+var server = restify.createServer({name: 'mythrandir'});
+
+// create the MongoDB server and database
+var mongoserv = new mongo.Server("localhost", 27017, {});
+var mongodb = new mongo.Db('mythrandir', mongoserv, {w: 1});
+
+// connect to the db
+mongodb.open(function(err, db){
+		if(err) throw err;
+		
+		// built in stuff from restify
+		server.use(restify.pre.userAgentConnection());
+		server.use(restify.queryParser());
+
+		// set up the routes
+		router.init(server, db);
+
+		// fire up the server
+		server.listen(port, function(){
+				console.log('%s listening on %s', server.name, server.url)
+		});
 });

@@ -28,12 +28,10 @@ def handleClient(sock):
     sock.close()
 
 sockets = []
-if len(sys.argv) != 2:
-   print __doc__
-else:
+port = int(os.envirenment.get(PORT,5000)
 #def main():
     sock = socket(AF_INET, SOCK_STREAM)
-    sock.bind(('',int(sys.argv[1])))
+    sock.bind(('',port))
     #sock.bind(('',420))
     sock.listen(10)
     while 1:
@@ -44,3 +42,4 @@ else:
             handleClient(socket)
 
 #main()
+http://www.heroku.com/

@@ -125,7 +125,7 @@ var putPeopleLocation = function(server, db){
 				verifyPlace(db),
 				function(req,res,next){
 						console.log(req.place);
-						res.send('done');
+						res.send('done\n');
 				}
 		];
 

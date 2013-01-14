@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 "USAGE: simpleserver.py <port>"
 from socket import *
-import sys, sha, cgi
+import sys, sha, cgi, os
 
 BUFFER = 1024
 MAGIC_STRING = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11"
@@ -28,18 +28,14 @@ def handleClient(sock):
     sock.close()
 
 sockets = []
-port = int(os.envirenment.get(PORT,5000)
-#def main():
-    sock = socket(AF_INET, SOCK_STREAM)
-    sock.bind(('',port))
-    #sock.bind(('',420))
-    sock.listen(10)
-    while 1:
-        newsock, client_addr = sock.accept()
-        sockets.append(newsock)
-        #print "Client connected:", client_addr 
-        for socket in sockets:
-            handleClient(socket)
+port = int(os.environ.get('PORT',5000))
+sock = socket(AF_INET, SOCK_STREAM)
+sock.bind(('',port))
+sock.listen(10)
+while 1:
+    newsock, client_addr = sock.accept()
+    sockets.append(newsock)
+    #print "Client connected:", client_addr 
+    for socket in sockets:
+        handleClient(socket)
 
-#main()
-http://www.heroku.com/

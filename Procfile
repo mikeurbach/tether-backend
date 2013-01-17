@@ -1,1 +1,1 @@
-web: python simpleserver.py
+web: node server.js

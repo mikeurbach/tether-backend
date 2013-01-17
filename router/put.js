@@ -1,8 +1,10 @@
 var restify = require('restify');
+var models = require('../models');
 
 // query the database for a place, given coordinates
 function placeFromCoords(db){
 		return function(req, res, next){
+				
 				// collect request data
 				req.lon = parseFloat(req.query.lon);
 				req.lat = parseFloat(req.query.lat);

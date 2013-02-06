@@ -25,7 +25,7 @@ mongodb.open(function(err, db){
 		router.init(server, db);
 
 		// fire up the server
-		server.listen(port, function(){
+		server.listen(port, '127.0.0.1', function(){
 				console.log('%s listening on %s', server.name, server.url)
 		});
 });

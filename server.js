@@ -3,7 +3,7 @@ var mongo = require('mongodb');
 var router = require('./router');
 
 // server init details
-var db_uri = process.env.MONGOLAB_URI || 'mongodb://localhost/mythrandir';
+var db_uri = process.env.MONGOHQ_URL || 'mongodb://localhost/mythrandir';
 var port = process.env.PORT || 5000;
 
 // create the HTTP server

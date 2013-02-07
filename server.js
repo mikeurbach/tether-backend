@@ -10,11 +10,7 @@ var port = process.env.PORT || 5000;
 var server = restify.createServer({name: 'mythrandir'});
 
 // create the MongoDB server and database
-var mongoserv = new mongo.Server("localhost", 27017, {});
-var mongodb = new mongo.Db('mythrandir', mongoserv, {w: 1});
-
-// connect to the db
-mongodb.open(function(err, db){
+mongo.Db.connect(db_uri, function(err, db){
 		if(err) throw err;
 		
 		// built in stuff from restify

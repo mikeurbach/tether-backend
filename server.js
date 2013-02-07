@@ -3,7 +3,7 @@ var mongo = require('mongodb');
 var router = require('./router');
 
 // server init details
-var db_uri = process.env.MONGOHQ_URL || 'mongodb://0.0.0.0/mythrandir';
+var db_uri = process.env.MONGOHQ_URL || 'mongodb://localhost/mythrandir';
 var port = process.env.PORT || 5000;
 
 // create the HTTP server
@@ -21,7 +21,7 @@ mongo.Db.connect(db_uri, function(err, db){
 		router.init(server, db);
 
 		// fire up the server
-		server.listen(port, '127.0.0.1', function(){
+		server.listen(port, '0.0.0.0', function(){
 				console.log('%s listening on %s', server.name, server.url)
 		});
 });

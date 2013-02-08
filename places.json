@@ -1,0 +1,15 @@
+{ "_id" : { "$oid" : "50f1d070efb8ae6d20ac44d3" }, "loc" : [ 12, 12 ], "name" : "bob" }
+{ "_id" : { "$oid" : "50f1d079efb8ae6d20ac44d4" }, "loc" : [ 12, 13 ], "name" : "joe" }
+{ "_id" : { "$oid" : "50f1d0c0efb8ae6d20ac44d5" }, "loc" : [ 12, 12 ], "name" : "bob" }
+{ "_id" : { "$oid" : "50f1d0ccefb8ae6d20ac44d6" }, "loc" : [ 12, 12 ], "name" : "fred" }
+{ "loc" : [ 12, 12 ], "name" : "boobs", "_id" : { "$oid" : "50f1d1103450766832000001" } }
+{ "loc" : [ 12, 12 ], "name" : "boobs", "_id" : { "$oid" : "50f1d12412432e7732000001" } }
+{ "_id" : { "$oid" : "50f1d172efb8ae6d20ac44d7" }, "loc" : [ 69.09999999999999, 69.2 ], "name" : "closest" }
+{ "_id" : { "$oid" : "50f1d17cefb8ae6d20ac44d8" }, "loc" : [ 69.09999999999999, 69.3 ], "name" : "next closest" }
+{ "_id" : { "$oid" : "50f1d184efb8ae6d20ac44d9" }, "loc" : [ 69.09999999999999, 69.40000000000001 ], "name" : "next next closest" }
+{ "_id" : { "$oid" : "50f20447a329e8cf011a8d5e" }, "loc" : [ 120, 0 ], "name" : "test" }
+{ "name" : "Dartmouth College: Alpha Delta", "types" : [ "university", "establishment" ], "address" : "9 East Wheelock Street, Hanover", "loc" : [ -72.28478, 43.703508 ], "_id" : { "$oid" : "50f23151d776c39e11000001" } }
+{ "name" : "Okeanides Villas", "types" : [ "establishment" ], "address" : "35 Km Heraklion-Rethymnon Road, Bali", "loc" : [ 24, 35 ], "_id" : { "$oid" : "50f7a2316f2b7b7e0e000001" } }
+{ "name" : "Okeanides Villas", "types" : [ "establishment" ], "address" : "35 Km Heraklion-Rethymnon Road, Bali", "loc" : [ 24, 35 ], "attendees" : [], "wall" : {}, "_id" : { "$oid" : "50f7a270636c569e0e000001" } }
+{ "_id" : { "$oid" : "50f8d9dc3fbd3c070b000001" }, "address" : "Branciforte Drive, Santa Cruz", "affinities" : { "50fa2a5e0f77a61e3612052e" : 3, "5104a5cb5ccc5d67c55d287b" : 4, "5104a68c5ccc5d67c55d287c" : 1, "blah" : 2, "uid" : 1 }, "affinity_field" : 7, "attendees" : [ { "$oid" : "5104a68c5ccc5d67c55d287c" }, { "$oid" : "50fa2a5e0f77a61e3612052e" }, { "$oid" : "5104a5cb5ccc5d67c55d287b" } ], "loc" : [ -122.001865, 36.999819 ], "name" : "DeLaveaga Park", "types" : [ "park", "establishment" ], "wall" : {} }
+{ "_id" : { "$oid" : "50f8f69469cea96f0f000001" } }

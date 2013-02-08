@@ -11,9 +11,11 @@ function getFriendIds(db){
 											 function(err, person){
 													 if(err) throw err;
 
-													 // hand off control
-													 req.friends = person.friends;
-													 next();
+													 if(person){
+															 // hand off control
+															 req.friends = person.friends;
+															 next();
+													 }
 											 });
 		};
 };

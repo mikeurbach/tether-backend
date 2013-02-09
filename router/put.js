@@ -205,7 +205,6 @@ function updateNewPlace(db){
 // notifies everyone wathing this user of their location change
 function finalize(db){
 		return function(req, res, next){
-				console.log('PUT /people/'+req.params.uid+'/location');
 				res.send();
 		};
 };

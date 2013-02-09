@@ -28,19 +28,16 @@ function getFriendDocs(db){
 				var stream = people.find({'_id': {'$in': req.friends}}).stream();
 				
 				// build up our response
-				response = new Array();
+				req.response = new Array();
 				stream.on('data', function(doc){
 						var person = {};
 						person.location = doc.location;
 						person.name = doc.name;
-						response.push(person);
+						req.response.push(person);
 				});
 				
 				// send out the results
-				stream.on('end', function(){
-						console.log('GET /people/'+req.params.uid+'/friends');
-						res.send(response);
-				});
+				stream.on('end', next);
 
 				// handle the unknown
 				stream.on('error', function(err){
@@ -49,11 +46,18 @@ function getFriendDocs(db){
 		}
 };
 
+function finalize(db){
+		return function(req, res, next){
+				res.send(req.response);
+		}
+};
+
 // routes a GET to /people/:uid/friends
 function getPeopleFriends(server, db){
 		var getPeopleFriendsChain = [
 				getFriendIds(db),
-				getFriendDocs(db)
+				getFriendDocs(db),
+				finalize(db)
 		];
 
 		server.get('/people/:uid/friends', getPeopleFriendsChain);

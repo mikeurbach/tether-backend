@@ -1,4 +1,5 @@
 var mongo = require('mongodb');
+var ObjectID = require('mongodb').ObjectID;
 var db_uri = process.env.MONGOHQ_URL || 'mongodb://localhost/mythrandir';
 
 // make up a few people to put into the app

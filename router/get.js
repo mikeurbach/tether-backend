@@ -41,7 +41,8 @@ function getFriendDocs(db){
 
 				// handle the unknown
 				stream.on('error', function(err){
-						console.log(err.stack);
+						console.log(err);
+						next();
 				});
 		}
 }

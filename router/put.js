@@ -45,7 +45,7 @@ function placeFromCoords(db){
 						});
 				});
 		};
-};
+}
 
 // if we have this place in the db, we can make our updates
 // otherwise, we have to figure out what the place is
@@ -123,7 +123,7 @@ function verifyPlace(db){
 						});
 				}
 		};
-};
+}
 
 // processes the place, if any, by loading it into the 
 // user's location, and moving the user to the new place,
@@ -163,7 +163,7 @@ function updatePerson(db){
 								next();
 						});
 		};
-};
+}
 
 // removes our user from the place they used to be
 function updateOldPlace(db){
@@ -179,7 +179,7 @@ function updateOldPlace(db){
 											{'$pull': {'attendees': uid}}, 
 											next);
 		};
-};
+}
 
 // puts our user into their new place
 function updateNewPlace(db){
@@ -200,17 +200,17 @@ function updateNewPlace(db){
 											}, 
 											next);
 		};
-};
+}
 
 // notifies everyone wathing this user of their location change
 function finalize(db){
 		return function(req, res, next){
 				res.send();
 		};
-};
+}
 
 // routes a PUT to /people/:uid/location
-var putPeopleLocation = function(server, db){
+function putPeopleLocation(server, db){
 		var putPeopleLocationChain = [
 				placeFromCoords(db),
 				verifyPlace(db),
@@ -221,7 +221,7 @@ var putPeopleLocation = function(server, db){
 		];
 
 		server.put('/people/:uid/location', putPeopleLocationChain);
-};
+}
 
 module.exports = function(server, db){
 		putPeopleLocation(server, db);

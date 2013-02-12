@@ -18,7 +18,7 @@ function getFriendIds(db){
 													 }
 											 });
 		};
-};
+}
 
 // looks up the friend documents from a list of friend id's
 function getFriendDocs(db){
@@ -44,13 +44,14 @@ function getFriendDocs(db){
 						console.log(err.stack);
 				});
 		}
-};
+}
 
+// send back the friends
 function finalize(db){
 		return function(req, res, next){
 				res.send(req.response);
 		}
-};
+}
 
 // routes a GET to /people/:uid/friends
 function getPeopleFriends(server, db){
@@ -61,7 +62,7 @@ function getPeopleFriends(server, db){
 		];
 
 		server.get('/people/:uid/friends', getPeopleFriendsChain);
-};
+}
 
 module.exports = function(server, db){
 		getPeopleFriends(server, db);

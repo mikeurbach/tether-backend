@@ -1,13 +1,22 @@
-var insert = function(db){
-		// // get a collection and bootstrap
-		// var places = db.collection('places');
-		// places.insert({'loc': [12, 12], 'name': 'boobs'}, function(err, obj){
-		// 		if(err) throw err;
+// creates a new user in the db
+function createUser(db){
+		return function(req, res, next){
+				// get our people collection
+				var people = db.collection('people');
 
-		// 		console.log('inserted bootstrap');
-		// });
-};
+				console.log(JSON.stringify(req));
+		}
+}
+
+// routes a POST to /people
+function postPeople(server, db){
+		var postPeopleChain = [
+				createUser(db)
+		];
+
+		server.post('/people', postPeopleChain);
+}
 
 module.exports = function(server, db){
-		// insert(db);
+		postPeople(server, db);
 };

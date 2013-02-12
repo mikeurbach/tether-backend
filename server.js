@@ -21,7 +21,7 @@ mongo.Db.connect(db_uri, function(err, db){
 		router.init(server, db);
 
 		// fire up the server
-		server.listen(port, '0.0.0.0', function(){
+		server.listen(port, function(){
 				console.log('%s listening on %s', server.name, server.url)
 		});
 });

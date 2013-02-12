@@ -4,7 +4,7 @@ function createUser(db){
 				// get our people collection
 				var people = db.collection('people');
 
-				console.log(JSON.stringify(req));
+				//console.log(JSON.stringify(req));
 		}
 }
 

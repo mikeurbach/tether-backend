@@ -13,7 +13,7 @@ function getFriendIds(db){
 
 													 if(person){
 															 // hand off control
-															 console.log(person.friends);
+															 console.log(person);
 															 req.friends = person.friends;
 															 next();
 													 }

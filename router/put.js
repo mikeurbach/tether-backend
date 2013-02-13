@@ -133,10 +133,12 @@ function updatePerson(db){
 				if(!req.place){
 						// uh oh, unknown place
 						var update = {
-								location: {
-										coords: [],
-										place_id: null,
-										place_name: ''
+								'$set': {
+										location: {
+												coords: [],
+												place_id: null,
+												place_name: 'Unknown Place'
+										}
 								}
 						};
 				} else {

@@ -35,6 +35,8 @@ function queryFB(db){
 				client.get(resource, function(err, freq, fres, obj){
 						if(err) throw err;
 						
+						console.log('fb response received');
+						
 						// go through the friends and add their fb_id's to an array
 						req.friends = [];
 						if(obj.data[0]){

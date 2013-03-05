@@ -5,12 +5,11 @@ var ObjectID = require('mongodb').ObjectID;
 function placeFromCoords(db){
 		return function(req, res, next){
 				debugger;
-				console.log(JSON.stringify(req.params));
 
 				// collect request data
-				req.lon = parseFloat(req.params.lon);
-				req.lat = parseFloat(req.params.lat);
-				req.acc = parseFloat(req.params.acc);
+				req.lon = parseFloat(req.params.data.lon);
+				req.lat = parseFloat(req.params.data.lat);
+				req.acc = parseFloat(req.params.data.acc);
 				
 				// get our places collection
 				var places = db.collection('places');

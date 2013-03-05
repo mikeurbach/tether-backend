@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "restify": "2.x",
- 		"mongodb": "1.2.x",
+ 		"mongodb": "2.2.x",
 		"mubsub": "0.2.x"
   },
   "engines": {

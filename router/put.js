@@ -18,6 +18,7 @@ function placeFromCoords(db){
 				places.ensureIndex({loc: '2d', aff: -1}, function(err, idx){
 						if(err) throw err;
 
+						console.log('index ensured, ['+req.lon + ',' + req.lat + '] @ ' + req.acc);
 						// query document
 						var query = {
 								loc: { 

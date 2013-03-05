@@ -7,7 +7,7 @@ function getFriendIds(db){
 				var people = db.collection('people');
 				
 				// find all our user's friends
-				people.findOne({'_id': new ObjectID(req.params.uid.toString())}, 
+				people.findOne({'_id': new ObjectID(req.params._id.toString())}, 
 											 function(err, person){
 													 if(err) throw err;
 
@@ -54,7 +54,7 @@ function finalize(db){
 		}
 }
 
-// routes a GET to /people/:uid/friends
+// routes a GET to /people?_id=...
 function getPeopleFriends(server, db){
 		var getPeopleFriendsChain = [
 				getFriendIds(db),
@@ -62,7 +62,7 @@ function getPeopleFriends(server, db){
 				finalize(db)
 		];
 
-		server.get('/people/:uid/friends', getPeopleFriendsChain);
+		server.get('/people', getPeopleFriendsChain);
 }
 
 module.exports = function(server, db){

@@ -16,6 +16,7 @@ mongo.Db.connect(db_uri, function(err, db){
 		// built in stuff from restify
 		server.use(restify.pre.userAgentConnection());
 		server.use(restify.queryParser());
+		server.use(restify.bodyParser());
 
 		// set up the routes
 		router.init(server, db);

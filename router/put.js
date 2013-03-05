@@ -7,9 +7,9 @@ function placeFromCoords(db){
 				debugger;
 
 				// collect request data
-				req.lon = parseFloat(req.query.lon);
-				req.lat = parseFloat(req.query.lat);
-				req.acc = parseFloat(req.query.acc);
+				req.lon = parseFloat(req.params.lon);
+				req.lat = parseFloat(req.params.lat);
+				req.acc = parseFloat(req.params.acc);
 				
 				// get our places collection
 				var places = db.collection('places');

@@ -18,7 +18,6 @@ function placeFromCoords(db){
 				places.ensureIndex({loc: '2d', aff: -1}, function(err, idx){
 						if(err) throw err;
 
-						console.log('index ensured, ['+req.lon + ',' + req.lat + '] @ ' + req.acc);
 						// query document
 						var query = {
 								loc: { 
@@ -36,7 +35,6 @@ function placeFromCoords(db){
 								// if we got results, save them for the next guy
 								// otherwise, set it null
 								if(result.length >= 1){
-										console.log(result[0]);
 										req.place = result[0];
 								} else {
 										req.place = null;

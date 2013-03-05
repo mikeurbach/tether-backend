@@ -222,7 +222,7 @@ function putPeopleLocation(server, db){
 				finalize(db)
 		];
 
-		server.put('/people/:uid/location', putPeopleLocationChain);
+		server.put('/people/:uid', putPeopleLocationChain);
 }
 
 module.exports = function(server, db){

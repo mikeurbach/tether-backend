@@ -136,7 +136,7 @@ function updatePerson(db){
 										location: {
 												coords: [],
 												place_id: null,
-												place_name: 'Unknown Place'
+												place_name: 'unknown place'
 										}
 								}
 						};
@@ -185,6 +185,11 @@ function updateOldPlace(db){
 // puts our user into their new place
 function updateNewPlace(db){
 		return function(req, res, next){
+				// if we really don't know where they are
+				if(!req.place){
+						next();
+				}
+
 				// get our places collection
 				var places = db.collection('places');
 

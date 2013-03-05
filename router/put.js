@@ -5,6 +5,7 @@ var ObjectID = require('mongodb').ObjectID;
 function placeFromCoords(db){
 		return function(req, res, next){
 				debugger;
+				console.log(JSON.stringify(req.params));
 
 				// collect request data
 				req.lon = parseFloat(req.params.lon);

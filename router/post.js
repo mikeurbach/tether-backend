@@ -4,6 +4,8 @@ var ObjectID = require('mongodb').ObjectID;
 // parses the person's info out of the FB data
 function parseInfo(db){
 		return function(req, res, next){
+				console.log(JSON.stringify(req.params));
+
 				// build up our user object
 				var person = {
 						name: req.params.name,

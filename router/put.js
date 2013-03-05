@@ -18,25 +18,25 @@ function placeFromCoords(db){
 				places.ensureIndex({loc: '2d', aff: -1}, function(err, idx){
 						if(err) throw err;
 
-						// options for the geoNear query
-						// note that the distance multiplier returns distance in miles
-						// but the lat, lon must be degrees
-						// and the acc is meters, still not sure about it
-						geoOpts = {
-								maxDistance: req.acc / 6371000,
-								num: 1,
-								spherical: true,
-								distanceMultiplier: 3963.1676
+						// query document
+						var query = {
+								loc: { 
+										$within: { 
+												$centerSphere: [ [req.lon, req.lat], // coords
+																				 req.acc / 6378137 ] // radius
+										} 
+								}
 						};
 
 						// query for places within acc of [x,y]
-						places.geoNear(req.lon, req.lat, geoOpts, function(err, result){
+						places.find(query).toArray(function(err, result){
 								if(err) throw err;
 
 								// if we got results, save them for the next guy
 								// otherwise, set it null
-								if(result.results[0]){
-										req.place = result.results[0].obj;
+								if(result.length >= 1){
+										console.log(result[0]);
+										req.place = result[0];
 								} else {
 										req.place = null;
 								}

@@ -40,7 +40,6 @@ function placeFromCoords(db){
 										req.place = null;
 								}
 
-								console.log('placeFromCoords: ' + JSON.stringify(req.place));
 								next();
 						});
 				});
@@ -55,7 +54,6 @@ function verifyPlace(db){
 
 				// check if we know this place
 				if(req.place){
-						console.log('verifyPlace (not null): ' + JSON.stringify(req.place));
 						next();
 				} else {
 						// if we don't, we've got to ask google
@@ -109,19 +107,16 @@ function verifyPlace(db){
 
 												// pump the new place into the database,
 												// then finally move on
-												console.log('verifyPlace: ' + JSON.stringify(req.place));
 												var places = db.collection('places');
 												places.insert(place, next);
 										} else {
 												// we're not confident enough
 												req.place = null;
-												console.log('verifyPlace (confidence): ' + JSON.stringify(req.place));
 												next();
 										}
 								} else {
 										// Google doesn't even know where they are
 										req.place = null;
-										console.log('verifyPlace (google): ' + JSON.stringify(req.place));
 										next();
 								}
 						});
@@ -161,8 +156,6 @@ function updatePerson(db){
 				// get our people collection
 				var people = db.collection('people');
 
-				console.log('updatePerson: ' + JSON.stringify(req.place));
-
 				// update the user's location
 				people.findAndModify(
 						{'_id': new ObjectID(req.params.uid.toString())}, 
@@ -182,8 +175,6 @@ function updateOldPlace(db){
 				// set up our user's id
 				var uid = new ObjectID(req.params.uid.toString());
 
-				console.log('updateOldPlace: ' + JSON.stringify(req.place));
-
 				// remove the user from their old place
 				places.update({'_id': req.old_place_id},
 											{'$pull': {'attendees': uid}}, 
@@ -196,7 +187,6 @@ function updateNewPlace(db){
 		return function(req, res, next){
 				// if we really don't know where they are
 				if(!req.place){
-						console.log('updateNewPlace (null): ' + JSON.stringify(req.place));
 						next();
 				} else {
 						// get our places collection
@@ -208,7 +198,6 @@ function updateNewPlace(db){
 						inc['affinities.' + uid] = 1;
 
 						// put the user in the new place
-						console.log('updateNewPlace (not null): ' + JSON.stringify(req.place));
 						places.update({'_id': req.place._id},
 													{
 															'$push': {'attendees': uid},

@@ -3,6 +3,10 @@ var ObjectID = require('mongodb').ObjectID;
 // gets a user's friends' ids
 function getFriendIds(db){
 		return function(req, res, next){
+				if(!req.params._id){
+						res.send();
+				}
+
 				// get our people collection
 				var people = db.collection('people');
 				

@@ -4,8 +4,6 @@ var ObjectID = require('mongodb').ObjectID;
 // parses the person's info out of the FB data
 function parseInfo(db){
 		return function(req, res, next){
-				console.log(JSON.stringify(req.params));
-
 				// build up our user object
 				var person = {
 						name: req.params.name,
@@ -34,8 +32,6 @@ function queryFB(db){
 				var resource = '/' + req.params.fid + '/friends?access_token=' + req.params.token;
 				client.get(resource, function(err, freq, fres, obj){
 						if(err) throw err;
-						
-						console.log('fb response received');
 						
 						// go through the friends and add their fb_id's to an array
 						req.friends = [];
